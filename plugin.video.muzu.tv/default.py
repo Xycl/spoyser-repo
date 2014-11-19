@@ -146,19 +146,19 @@ def downloadPath(title, stream_url):
 
     if Addon.get_setting('ask_folder') == 'true':
         dialog = xbmcgui.Dialog()
-    downloadFolder = dialog.browse(3, 'Save to folder...', 'files', '', False, False, downloadFolder)
+        downloadFolder = dialog.browse(3, 'Save to folder...', 'files', '', False, False, downloadFolder)
     if downloadFolder == '' :
         return None
 
     if downloadFolder is '':
         d = xbmcgui.Dialog()
-    d.ok(Addon.get_string(30300),'You have not set the default download folder.\nPlease update the addon settings and try again.','','')
+        d.ok(Addon.get_string(30300),'You have not set the default download folder.\nPlease update the addon settings and try again.','','')
     Addon.addon.openSettings(sys.argv[0])
     downloadFolder = Addon.get_setting('download_folder')
 
     if downloadFolder == '' and Addon.get_setting('ask_folder') == 'true':
         dialog = xbmcgui.Dialog()
-    downloadFolder = dialog.browse(3, 'Save to folder...', 'files', '', False, False, downloadFolder)   
+        downloadFolder = dialog.browse(3, 'Save to folder...', 'files', '', False, False, downloadFolder)   
 
     if downloadFolder == '' :
         return None
@@ -173,11 +173,11 @@ def downloadPath(title, stream_url):
    
     if Addon.get_setting('ask_filename') == 'true':
         kb = xbmc.Keyboard(title, 'Save video as...' )
-    kb.doModal()
-    if kb.isConfirmed():
-        filename = kb.getText()    
-    else:
-        filename = title
+        kb.doModal()
+        if kb.isConfirmed():
+            filename = kb.getText()    
+        else:
+            filename = title
 
     filename = clean(filename) + '.' + ext
 
